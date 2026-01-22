@@ -1,0 +1,58 @@
+public class RecursionProblems {
+
+    public static void main(String[] args) {
+
+        // 1. Factorial
+        System.out.println("Factorial of 5: " + factorial(5));
+
+        // 2. Fibonacci
+        System.out.println("Fibonacci at position 6: " + fibonacci(6));
+
+        // 3. Sum of array elements
+        int[] arr1 = {2, 4, 6, 8};
+        System.out.println("Sum of array: " + sumArray(arr1, arr1.length));
+
+        // 4. Check if array is sorted
+        int[] arr2 = {3, 5, 7, 9};
+        System.out.println("Array is sorted: " + isSorted(arr2, arr2.length));
+
+        // 5. Find min and max
+        int[] arr3 = {2, 8, 1, 6};
+        System.out.println("Minimum: " + findMin(arr3, arr3.length));
+        System.out.println("Maximum: " + findMax(arr3, arr3.length));
+    }
+
+    public static int factorial(int n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+
+    public static int fibonacci(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static int sumArray(int[] arr, int n) {
+        if (n == 0) return 0;
+        return arr[n - 1] + sumArray(arr, n - 1);
+    }
+
+    public static boolean isSorted(int[] arr, int n) {
+        if (n == 0 || n == 1) return true;
+        if (arr[n - 2] > arr[n - 1]) return false;
+        return isSorted(arr, n - 1);
+    }
+
+    public static int findMin(int[] arr, int n) {
+        if (n == 1) return arr[0];
+        int minRest = findMin(arr, n - 1);
+        return (arr[n - 1] < minRest) ? arr[n - 1] : minRest;
+    }
+
+    public static int findMax(int[] arr, int n) {
+        if (n == 1) return arr[0];
+        int maxRest = findMax(arr, n - 1);
+        return (arr[n - 1] > maxRest) ? arr[n - 1] : maxRest;
+    }
+}
